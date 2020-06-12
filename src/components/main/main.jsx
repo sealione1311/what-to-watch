@@ -2,7 +2,7 @@ import React from "react";
 
 const Main = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {movieTitle, movieGenre, movieDate} = props;
+  const {title: movieTitle, genre: movieGenre, date: movieDate} = props.movie;
   return (
     <React.Fragment>
       <section className="movie-card">
