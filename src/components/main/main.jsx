@@ -11,8 +11,8 @@ const Main = (props) => {
         <div className="small-movie-card__image">
           <img src="img/bohemian-rhapsody.jpg" alt={movie} width="280" height="175" />
         </div>
-        <h3 className="small-movie-card__title" titleClickHandler = {titleClickHandler}>
-          <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html" onClick={titleClickHandler}>{movie}</a>
         </h3>
       </article>);
   });

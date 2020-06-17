@@ -44,12 +44,12 @@ describe(`Simulate title click`, () => {
           titleClickHandler={titleClickHandler}
         />
     );
-    const movieCardTitles = main.find(`small-movie-card__title`);
+    const moviesTitles = main.find(`small-movie-card__link`);
 
-    movieCardTitles.forEach((title) => {
+    moviesTitles.forEach((title) => {
       title.simulate(`click`);
     });
 
-    expect(titleClickHandler).toHaveBeenCalledTimes(movieCardTitles.length);
+    expect(titleClickHandler).toHaveBeenCalledTimes(moviesTitles.length);
   });
 });
