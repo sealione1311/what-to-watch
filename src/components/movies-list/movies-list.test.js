@@ -1,11 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-const mockMovie = {
-  title: `The Grand Budapest`,
-  genre: `Drama`,
-  date: `2014`,
-};
+import React from 'react';
+import renderer from 'react-test-renderer';
+import MoviesList from "../movies-list/movies-list.jsx";
 
 const films = [
   {
@@ -50,17 +45,15 @@ const films = [
   }
 ];
 
-const onTitleClick = () => {};
 
-describe(`Render Main`, () => {
-  it(`Render Main`, () => {
-    const tree = renderer
-    .create(<Main
-      movie = {mockMovie}
-      films = {films}
-      onTitleClick = {onTitleClick}
-    />)
-    .toJSON();
+describe(`RenderMoviesList`, () => {
+  it(`RenderMoviesList`, () => {
+    const tree = renderer.create(
+        <MoviesList
+          films={films}
+          onTitleClick={() => {}}
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

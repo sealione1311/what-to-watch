@@ -1,13 +1,4 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-const mockMovie = {
-  title: `The Grand Budapest`,
-  genre: `Drama`,
-  date: `2014`,
-};
-
-const films = [
+export default [
   {
     id: 1,
     name: `Bohemian Rhapsody`,
@@ -49,19 +40,3 @@ const films = [
     src: `img/snatch.jpg`
   }
 ];
-
-const onTitleClick = () => {};
-
-describe(`Render Main`, () => {
-  it(`Render Main`, () => {
-    const tree = renderer
-    .create(<Main
-      movie = {mockMovie}
-      films = {films}
-      onTitleClick = {onTitleClick}
-    />)
-    .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-});

@@ -13,43 +13,75 @@ const mockMovie = {
   date: `2014`,
 };
 
-const mockMoviesTitles = [
-  `Fantastic Beasts`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
-  `We need to talk about Kevin`,
-  `What We Do in the Shadows`,
-  `Revenant`, `Johnny English`,
-  `Shutter Island`,
-  `Pulp Fiction`,
-  `No Country for Old Men`,
-  `Snatch`,
-  `Moonrise Kingdom`,
-  `Seven Years in Tibet`,
-  `War of the Worlds`,
-  `Dardjeeling Limited`,
-  `Orlando`,
-  `Mindhunter`,
-  `Midnight Special`
+const films = [
+  {
+    id: 1,
+    name: `Bohemian Rhapsody`,
+    src: `img/bohemian-rhapsody.jpg`
+  },
+  {
+    id: 2,
+    name: `Avatar`,
+    src: `img/avatar.jpg`
+  },
+  {
+    id: 3,
+    name: `Aviator`,
+    src: `img/aviator.jpg`
+  },
+  {
+    id: 4,
+    name: `No Country for Old Men`,
+    src: `img/no-country-for-old-men.jpg`
+  },
+  {
+    id: 5,
+    name: `Seven Years in Tibet`,
+    src: `img/seven-years-in-tibet.jpg`
+  },
+  {
+    id: 6,
+    name: `War of the Worlds`,
+    src: `img/war-of-the-worlds.jpg`
+  },
+  {
+    id: 7,
+    name: `Orlando`,
+    src: `img/orlando.jpg`
+  },
+  {
+    id: 8,
+    name: `Snatch`,
+    src: `img/snatch.jpg`
+  }
 ];
 
 describe(`Simulate title click`, () => {
   it(`Simulate title click`, () => {
-    const titleClickHandler = jest.fn();
+    const onTitleClick = jest.fn();
+    const onMouseOver = jest.fn();
     const main = shallow(
         <Main
           movie={mockMovie}
-          moviesTitles = {mockMoviesTitles}
-          titleClickHandler={titleClickHandler}
+          films = {films}
+          onTitleClick={onTitleClick}
+          onMouseOver={onMouseOver}
         />
     );
+
     const moviesTitles = main.find(`small-movie-card__link`);
+    const movies = main.find(`small-movie-card catalog__movies-card`);
 
     moviesTitles.forEach((title) => {
       title.simulate(`click`);
     });
 
-    expect(titleClickHandler).toHaveBeenCalledTimes(moviesTitles.length);
+    movies.forEach((movie) => {
+      movie.simulate(`mouseover`);
+    });
+
+    expect(onMouseOver).toHaveBeenCalledTimes(movies.length);
+    expect(onTitleClick).toHaveBeenCalledTimes(moviesTitles.length);
   });
 });
+
