@@ -259,31 +259,8 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Fantastic Beasts"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Fantastic Beasts
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          id={1}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -309,14 +286,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          id={2}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Macbeth"
+              alt="Avatar"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/avatar.jpg"
               width="280"
             />
           </div>
@@ -328,12 +307,14 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Macbeth
+              Avatar
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          id={3}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -341,7 +322,7 @@ Array [
             <img
               alt="Aviator"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -359,156 +340,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="We need to talk about Kevin"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              We need to talk about Kevin
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="What We Do in the Shadows"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              What We Do in the Shadows
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Revenant"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Revenant
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Johnny English"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Johnny English
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Shutter Island"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Shutter Island
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Pulp Fiction"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Pulp Fiction
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          id={4}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -516,7 +349,7 @@ Array [
             <img
               alt="No Country for Old Men"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/no-country-for-old-men.jpg"
               width="280"
             />
           </div>
@@ -534,56 +367,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Snatch"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Snatch
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Moonrise Kingdom"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Moonrise Kingdom
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          id={5}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -591,7 +376,7 @@ Array [
             <img
               alt="Seven Years in Tibet"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/seven-years-in-tibet.jpg"
               width="280"
             />
           </div>
@@ -609,6 +394,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          id={6}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -616,7 +403,7 @@ Array [
             <img
               alt="War of the Worlds"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/war-of-the-worlds.jpg"
               width="280"
             />
           </div>
@@ -634,31 +421,8 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Dardjeeling Limited"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Dardjeeling Limited
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          id={7}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -666,7 +430,7 @@ Array [
             <img
               alt="Orlando"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/orlando.jpg"
               width="280"
             />
           </div>
@@ -684,14 +448,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          id={8}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Mindhunter"
+              alt="Snatch"
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              src="img/snatch.jpg"
               width="280"
             />
           </div>
@@ -703,32 +469,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Mindhunter
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Midnight Special"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Midnight Special
+              Snatch
             </a>
           </h3>
         </article>
