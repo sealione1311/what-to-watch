@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card.jsx";
+import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -13,12 +13,14 @@ class MoviesList extends PureComponent {
   render() {
     const films = this.props.films;
     const onTitleClick = this.props.onTitleClick;
+    const onSmallCardClick = this.props.onSmallCardClick;
     const moviesList = films.map((movie, i) => {
       return (
-        <MovieCard
+        <MovieCardSmall
           key={movie + i}
           movie={movie}
           onTitleClick={onTitleClick}
+          onSmallCardClick={onSmallCardClick}
           onCardHover = {(name) => {
             this.setState({
               activeCard: name,
@@ -37,6 +39,7 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
+  onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
 };
 

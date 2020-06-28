@@ -11,7 +11,7 @@ module.exports = {
     open: true,
     inline: true,
     hot: true,
-    port: 1337,
+    port: 1338,
   },
   module: {
     rules: [
