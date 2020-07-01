@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -89,7 +89,7 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Drame
             </span>
             <span
               className="movie-card__year"
@@ -260,6 +260,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={1}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -287,15 +288,16 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={2}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Avatar"
+              alt="Johnny-english"
               height="175"
-              src="img/avatar.jpg"
+              src="img/johnny-english.jpg"
               width="280"
             />
           </div>
@@ -307,22 +309,23 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Avatar
+              Johnny-english
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
           id={3}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Aviator"
+              alt="Macbeth"
               height="175"
-              src="img/aviator.jpg"
+              src="img/macbeth.jpg"
               width="280"
             />
           </div>
@@ -334,13 +337,14 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Aviator
+              Macbeth
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
           id={4}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -368,6 +372,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={5}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -395,6 +400,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={6}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -422,6 +428,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={7}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
@@ -449,6 +456,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           id={8}
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div

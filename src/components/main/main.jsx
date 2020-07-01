@@ -6,6 +6,7 @@ const Main = (props) => {
   const {title: movieTitle, genre: movieGenre, date: movieDate} = props.movie;
   const films = props.films;
   const onTitleClick = props.onTitleClick;
+  const onSmallCardClick = props.onSmallCardClick;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -103,6 +104,7 @@ const Main = (props) => {
             <MoviesList
               films={films}
               onTitleClick={onTitleClick}
+              onSmallCardClick={onSmallCardClick}
             />
           </div>
 
@@ -130,12 +132,20 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  onSmallCardClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   movie: PropTypes.shape({
+    bg: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    ratingCount: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.array.isRequired,
   })
 
 };
