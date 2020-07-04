@@ -1,29 +1,55 @@
-import React from "react";
+import React, {PureComponent, Fragment} from "react";
 import PropTypes from "prop-types";
+import VideoPlayer from '../video-player/video-player.jsx';
 
-const MovieCardSmall = (props) => {
-  const movie = props.movie;
-  const {id, smallImage, title} = movie;
-  const onTitleClick = props.onTitleClick;
-  const onSmallCardClick = props.onSmallCardClick;
-  const onCardHover = props.onCardHover;
-  return (
-    <React.Fragment>
-      <article id={id} onMouseOver = {() => onCardHover(movie)}
-        onClick={(evt) => {
-          evt.preventDefault();
-          onSmallCardClick(movie);
-        }} className="small-movie-card catalog__movies-card">
-        <div className="small-movie-card__image">
-          <img src={smallImage} alt={title} width="280" height="175" />
-        </div>
-        <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
-        </h3>
-      </article>
-    </React.Fragment>
-  );
-};
+export default class MovieCardSmall extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPlaying: false,
+    };
+  }
+  render() {
+    const movie = this.props.movie;
+    const {id, smallImage, title, preview} = movie;
+    const onTitleClick = this.props.onTitleClick;
+    const onSmallCardClick = this.props.onSmallCardClick;
+    const onCardHover = this.props.onCardHover;
+    return (
+      <Fragment>
+        <article id={id}
+          onMouseOver = {() => {
+            this.setState({
+              isPlaying: true,
+            });
+            onCardHover(id);
+          }}
+          onMouseOut = {() => {
+            this.setState({
+              isPlaying: false,
+            });
+          }}
+          onClick={(evt) => {
+            evt.preventDefault();
+            onSmallCardClick(movie);
+          }} className="small-movie-card catalog__movies-card">
+          <div className="small-movie-card__image">
+            <VideoPlayer
+              isPlaying={this.state.isPlaying}
+              src={preview}
+              poster={smallImage}
+            />
+          </div>
+          <h3 className="small-movie-card__title">
+            <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
+          </h3>
+
+        </article>
+      </Fragment>
+    );
+  }
+}
 
 MovieCardSmall.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
@@ -33,7 +59,6 @@ MovieCardSmall.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     smallImage: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
   })
 };
-
-export default MovieCardSmall;

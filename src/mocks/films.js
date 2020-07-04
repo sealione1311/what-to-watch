@@ -12,6 +12,7 @@ export default [
     ratingCount: `799`,
     director: `Bryan Singer`,
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ export default [
     ratingCount: `489`,
     director: `Peter Howitt`,
     starring: [`Rowan Atkinson`, `John Malkovich`, `Natalie Imbruglia`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ export default [
     ratingCount: `772`,
     director: `Justin Kurzel`,
     starring: [`Michael Fassbender`, `Marion Cotillard`, `Jack Madigan`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ export default [
     ratingCount: `708`,
     director: `Joel Coen`,
     starring: [`Tommy Lee Jones`, `Javier Bardem`, `Josh Brolin`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ export default [
     ratingCount: `608`,
     director: `Jean-Jacques Annaud`,
     starring: [`Brad Pitt`, `David Thewlis`, `BD Wong`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ export default [
     ratingCount: `408`,
     director: `Steven Spielberg`,
     starring: [`Tom Cruise`, `Dakota Fanning`, `Tim Robbins`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 7,
@@ -96,6 +102,7 @@ export default [
     ratingCount: `738`,
     director: `Sally Potter`,
     starring: [`Tilda Swinton`, `Billy Zane`, `Quentin Crisp`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 8,
@@ -110,5 +117,6 @@ export default [
     ratingCount: `898`,
     director: `Guy Ritchie`,
     starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];

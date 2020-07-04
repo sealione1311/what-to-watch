@@ -21,48 +21,57 @@ const mockMovie = {
   ratingCount: `740`,
   director: `Wes Anderson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+  preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 const films = [
   {
     id: 1,
     name: `Bohemian Rhapsody`,
-    src: `img/bohemian-rhapsody.jpg`
+    src: `img/bohemian-rhapsody.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 2,
     name: `Avatar`,
-    src: `img/avatar.jpg`
+    src: `img/avatar.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 3,
     name: `Aviator`,
-    src: `img/aviator.jpg`
+    src: `img/aviator.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 4,
     name: `No Country for Old Men`,
-    src: `img/no-country-for-old-men.jpg`
+    src: `img/no-country-for-old-men.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 5,
     name: `Seven Years in Tibet`,
-    src: `img/seven-years-in-tibet.jpg`
+    src: `img/seven-years-in-tibet.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 6,
     name: `War of the Worlds`,
-    src: `img/war-of-the-worlds.jpg`
+    src: `img/war-of-the-worlds.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 7,
     name: `Orlando`,
-    src: `img/orlando.jpg`
+    src: `img/orlando.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
   {
     id: 8,
     name: `Snatch`,
-    src: `img/snatch.jpg`
+    src: `img/snatch.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   }
 ];
 

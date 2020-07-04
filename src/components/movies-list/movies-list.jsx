@@ -21,9 +21,9 @@ class MoviesList extends PureComponent {
           movie={movie}
           onTitleClick={onTitleClick}
           onSmallCardClick={onSmallCardClick}
-          onCardHover = {(name) => {
+          onCardHover = {(idActiveCard) => {
             this.setState({
-              activeCard: name,
+              activeCard: idActiveCard,
             });
           }}
         />
