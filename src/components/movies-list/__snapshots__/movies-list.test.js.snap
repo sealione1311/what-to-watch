@@ -6,15 +6,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={1}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Bohemian Rhapsody"
+      <video
+        className="video-player"
         height="175"
-        src="img/bohemian-rhapsody.jpg"
+        muted="muted"
+        poster="img/bohemian-rhapsody.jpg"
         width="280"
       />
     </div>
@@ -34,15 +36,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={2}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Johnny-english"
+      <video
+        className="video-player"
         height="175"
-        src="img/johnny-english.jpg"
+        muted="muted"
+        poster="img/johnny-english.jpg"
         width="280"
       />
     </div>
@@ -62,15 +66,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={3}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Macbeth"
+      <video
+        className="video-player"
         height="175"
-        src="img/macbeth.jpg"
+        muted="muted"
+        poster="img/macbeth.jpg"
         width="280"
       />
     </div>
@@ -90,15 +96,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={4}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="No Country for Old Men"
+      <video
+        className="video-player"
         height="175"
-        src="img/no-country-for-old-men.jpg"
+        muted="muted"
+        poster="img/no-country-for-old-men.jpg"
         width="280"
       />
     </div>
@@ -118,15 +126,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={5}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Seven Years in Tibet"
+      <video
+        className="video-player"
         height="175"
-        src="img/seven-years-in-tibet.jpg"
+        muted="muted"
+        poster="img/seven-years-in-tibet.jpg"
         width="280"
       />
     </div>
@@ -146,15 +156,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={6}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="War of the Worlds"
+      <video
+        className="video-player"
         height="175"
-        src="img/war-of-the-worlds.jpg"
+        muted="muted"
+        poster="img/war-of-the-worlds.jpg"
         width="280"
       />
     </div>
@@ -174,15 +186,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={7}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Orlando"
+      <video
+        className="video-player"
         height="175"
-        src="img/orlando.jpg"
+        muted="muted"
+        poster="img/orlando.jpg"
         width="280"
       />
     </div>
@@ -202,15 +216,17 @@ Array [
     className="small-movie-card catalog__movies-card"
     id={8}
     onClick={[Function]}
+    onMouseOut={[Function]}
     onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Snatch"
+      <video
+        className="video-player"
         height="175"
-        src="img/snatch.jpg"
+        muted="muted"
+        poster="img/snatch.jpg"
         width="280"
       />
     </div>

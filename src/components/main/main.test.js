@@ -29,7 +29,11 @@ describe(`Render Main`, () => {
       films = {films}
       onTitleClick = {onTitleClick}
       onSmallCardClick={onSmallCardClick}
-    />)
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
     expect(tree).toMatchSnapshot();

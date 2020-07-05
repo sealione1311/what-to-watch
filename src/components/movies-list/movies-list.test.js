@@ -10,8 +10,12 @@ describe(`RenderMoviesList`, () => {
           films={films}
           onTitleClick={() => {}}
           onSmallCardClick={() => {}}
-        />
-    ).toJSON();
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
+        .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
