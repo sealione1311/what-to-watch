@@ -1,6 +1,7 @@
 import React, {PureComponent, Fragment, createRef} from "react";
 import PropTypes from "prop-types";
-const delay = 1000;
+
+const DELAY = 1000;
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -20,7 +21,7 @@ class VideoPlayer extends PureComponent {
 
 
     if (isPlaying) {
-      this._videoTimer = setTimeout(() => video.play(), delay);
+      this._videoTimer = setTimeout(() => video.play(), DELAY);
 
 
     } else {

@@ -12,8 +12,7 @@ export default class MovieCardSmall extends PureComponent {
   }
   render() {
     const movie = this.props.movie;
-    const {id, smallImage, title, preview} = movie;
-    const onTitleClick = this.props.onTitleClick;
+    const {id, smallImage, name, preview} = movie;
     const onSmallCardClick = this.props.onSmallCardClick;
     const onCardHover = this.props.onCardHover;
     return (
@@ -42,7 +41,7 @@ export default class MovieCardSmall extends PureComponent {
             />
           </div>
           <h3 className="small-movie-card__title">
-            <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
+            <a className="small-movie-card__link" href="movie-page.html">{name}</a>
           </h3>
 
         </article>
@@ -54,10 +53,9 @@ export default class MovieCardSmall extends PureComponent {
 MovieCardSmall.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     smallImage: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
   })
