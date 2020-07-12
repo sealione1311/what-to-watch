@@ -4,7 +4,7 @@ import MovieCardSmall from "./movie-card-small.jsx";
 
 const film = {
   id: 1,
-  title: `Bohemian Rhapsody`,
+  name: `Bohemian Rhapsody`,
   smallImage: `img/bohemian-rhapsody.jpg`,
   preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from "../main/main.jsx";
 import MovieCard from '../movie-card/movie-card.jsx';
+import reviews from '../../mocks/reviews.js';
 
 const onTitleClick = () => {};
 
@@ -41,6 +42,9 @@ class App extends PureComponent {
     return (
       <MovieCard
         movie = {currentCard}
+        reviews = {reviews}
+        films = {this.props.films}
+        onSmallCardClick={this._smallCardClickHandler}
       />
     );
   }
@@ -72,9 +76,9 @@ App.propTypes = {
   movie: PropTypes.shape({
     bg: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    released: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rating: PropTypes.string.isRequired,
     ratingCount: PropTypes.string.isRequired,

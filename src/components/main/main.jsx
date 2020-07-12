@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 
 const Main = (props) => {
-  const {title: movieTitle, genre: movieGenre, date: movieDate} = props.movie;
+  const {name: movieTitle, genre: movieGenre, released: movieDate} = props.movie;
   const films = props.films;
   const onTitleClick = props.onTitleClick;
   const onSmallCardClick = props.onSmallCardClick;
@@ -138,9 +138,9 @@ Main.propTypes = {
   movie: PropTypes.shape({
     bg: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    released: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rating: PropTypes.string.isRequired,
     ratingCount: PropTypes.string.isRequired,

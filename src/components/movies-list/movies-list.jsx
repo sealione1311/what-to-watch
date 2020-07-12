@@ -12,14 +12,12 @@ class MoviesList extends PureComponent {
 
   render() {
     const films = this.props.films;
-    const onTitleClick = this.props.onTitleClick;
     const onSmallCardClick = this.props.onSmallCardClick;
     const moviesList = films.map((movie, i) => {
       return (
         <MovieCardSmall
           key={movie + i}
           movie={movie}
-          onTitleClick={onTitleClick}
           onSmallCardClick={onSmallCardClick}
           onCardHover = {(idActiveCard) => {
             this.setState({
@@ -38,7 +36,6 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  onTitleClick: PropTypes.func.isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
 };

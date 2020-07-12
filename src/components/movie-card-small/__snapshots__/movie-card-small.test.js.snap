@@ -25,7 +25,6 @@ exports[`Render MovieCardSmall Render MovieCardSmall 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-      onClick={[Function]}
     >
       Bohemian Rhapsody
     </a>

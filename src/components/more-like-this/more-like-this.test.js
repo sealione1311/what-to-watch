@@ -1,19 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import MoreLikeThis from "./more-like-this.jsx";
 import films from "../../mocks/films.js";
-import film from "../../mocks/film.js";
 
-const onTitleClick = () => {};
 const onSmallCardClick = () => {};
 
-describe(`Render Main`, () => {
-  it(`Render Main`, () => {
+describe(`Render MoreLikeThis`, () => {
+  it(`Render MoreLikeThis`, () => {
     const tree = renderer
-    .create(<Main
-      movie = {film}
-      films = {films}
-      onTitleClick = {onTitleClick}
+    .create(<MoreLikeThis
+      filteredMovies = {films}
       onSmallCardClick={onSmallCardClick}
     />, {
       createNodeMock: () => {
