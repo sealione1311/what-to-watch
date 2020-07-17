@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from "../main/main.jsx";
 import MovieCard from '../movie-card/movie-card.jsx';
 import reviews from '../../mocks/reviews.js';
+import {connect} from "react-redux";
 
 const onTitleClick = () => {};
 
@@ -71,6 +72,11 @@ class App extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+  movie: state.movie,
+});
+
 App.propTypes = {
   films: PropTypes.array.isRequired,
   movie: PropTypes.shape({
@@ -87,4 +93,5 @@ App.propTypes = {
   })
 };
 
-export default App;
+export {App};
+export default connect(mapStateToProps)(App);

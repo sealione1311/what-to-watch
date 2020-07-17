@@ -5,6 +5,7 @@ import OverviewTab from './../overview-tab/overview-tab.jsx';
 import DetailsTab from './../details-tab/details-tab.jsx';
 import ReviewsTab from '../reviews-tab/reviews-tab.jsx';
 import MoreLikeThis from '../more-like-this/more-like-this.jsx';
+import {connect} from "react-redux";
 
 const Tab = {
   OVERVIEW: `Overview`,
@@ -14,7 +15,7 @@ const Tab = {
 
 const tabs = Object.values(Tab);
 
-export default class MovieCard extends PureComponent {
+class MovieCard extends PureComponent {
   constructor(props) {
 
     super(props);
@@ -165,6 +166,9 @@ export default class MovieCard extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  films: state.filmsByGenre
+});
 
 MovieCard.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
@@ -183,3 +187,7 @@ MovieCard.propTypes = {
     starring: PropTypes.array.isRequired,
   })
 };
+
+export {MovieCard};
+export default connect(mapStateToProps)(MovieCard);
+
