@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
+import {connect} from "react-redux";
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -35,9 +36,14 @@ class MoviesList extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  films: state.filmsByGenre
+});
+
 MoviesList.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
 };
 
-export default MoviesList;
+export {MoviesList};
+export default connect(mapStateToProps)(MoviesList);
