@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
-
-
 const Main = (props) => {
+
   const {name: movieTitle, genre: movieGenre, released: movieDate} = props.movie;
   const films = props.films;
   const onTitleClick = props.onTitleClick;
@@ -72,16 +71,11 @@ const Main = (props) => {
           <GenresList
             films={films}
           />
-          <div className="catalog__movies-list">
-            <MoviesList
-              onTitleClick={onTitleClick}
-              onSmallCardClick={onSmallCardClick}
-            />
-          </div>
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <MoviesList
+            films={films}
+            onTitleClick={onTitleClick}
+            onSmallCardClick={onSmallCardClick}
+          />
         </section>
 
         <footer className="page-footer">

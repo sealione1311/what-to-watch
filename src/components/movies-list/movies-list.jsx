@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import {ActionCreator} from "../../redux/reducer.js";
 import {connect} from "react-redux";
 
 class MoviesList extends PureComponent {
@@ -12,9 +14,9 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const films = this.props.films;
+    const {films, displayedFilmsCount, onShowMoreButtonClick} = this.props;
     const onSmallCardClick = this.props.onSmallCardClick;
-    const moviesList = films.map((movie, i) => {
+    const moviesList = films.slice(0, displayedFilmsCount).map((movie, i) => {
       return (
         <MovieCardSmall
           key={movie + i}
@@ -30,20 +32,34 @@ class MoviesList extends PureComponent {
     });
     return (
       <React.Fragment>
-        {moviesList}
+        <div className="catalog__movies-list">
+          {moviesList}
+        </div>
+        {films.length > displayedFilmsCount ? <ShowMoreButton
+          onShowMoreButtonClick={onShowMoreButtonClick}
+        /> : ``}
       </React.Fragment>
     );
   }
-}
 
-const mapStateToProps = (state) => ({
-  films: state.filmsByGenre
-});
+}
 
 MoviesList.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
+  displayedFilmsCount: PropTypes.number.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  displayedFilmsCount: state.displayedFilmsCount
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onShowMoreButtonClick() {
+    dispatch(ActionCreator.increaseDisplayedFilmsCount());
+  }
+});
+
 export {MoviesList};
-export default connect(mapStateToProps)(MoviesList);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesList);

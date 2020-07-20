@@ -73,7 +73,7 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  films: state.films,
+  films: state.filmsByGenre,
   movie: state.movie,
 });
 

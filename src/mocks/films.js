@@ -126,5 +126,37 @@ export default [
     starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
     runTime: `1h 39m`,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
-  }
+  },
+  {
+    id: 9,
+    bg: `https://placeimg.com/1000/550/arch`,
+    poster: `https://placeimg.com/270/410/nature`,
+    name: `Bohemian Rhapsody2`,
+    smallImage: `img/bohemian-rhapsody.jpg`,
+    genre: `Documentary`,
+    released: `2018`,
+    description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury.`,
+    rating: `8.0`,
+    ratingCount: `799`,
+    director: `Bryan Singer`,
+    starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
+    runTime: `1h 39m`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  },
+  {
+    id: 10,
+    bg: `https://placeimg.com/1000/550/arch`,
+    poster: `https://placeimg.com/270/410/nature`,
+    name: `Johnny-english2`,
+    smallImage: `img/johnny-english.jpg`,
+    genre: `Comedy`,
+    released: `2003`,
+    description: `After a sudden attack on MI5, Johnny English, Britain's most confident, yet unintelligent spy, becomes Britain's only spy.`,
+    rating: `6.2`,
+    ratingCount: `489`,
+    director: `Peter Howitt`,
+    starring: [`Rowan Atkinson`, `John Malkovich`, `Natalie Imbruglia`],
+    runTime: `1h 39m`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
 ];
