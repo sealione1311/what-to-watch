@@ -165,11 +165,6 @@ class MovieCard extends PureComponent {
       </React.Fragment>);
   }
 }
-
-const mapStateToProps = (state) => ({
-  films: state.filmsByGenre
-});
-
 MovieCard.propTypes = {
   onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
@@ -187,6 +182,10 @@ MovieCard.propTypes = {
     starring: PropTypes.array.isRequired,
   })
 };
+
+const mapStateToProps = (state) => ({
+  films: state.filmsByGenre
+});
 
 export {MovieCard};
 export default connect(mapStateToProps)(MovieCard);

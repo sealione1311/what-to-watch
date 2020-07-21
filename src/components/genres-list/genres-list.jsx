@@ -36,6 +36,13 @@ const GenresList = ({currentGenre, onGenreClick, films}) => {
     </ul>
   );
 };
+
+GenresList.propTypes = {
+  films: PropTypes.array.isRequired,
+  currentGenre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre,
   films: state.films
@@ -46,14 +53,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setCurrentGenre(genre));
     const filmsByGenre = filterMoviesByGenre(films, genre);
     dispatch(ActionCreator.setFiltredFilmsByGenre(filmsByGenre));
+    dispatch(ActionCreator.resetDisplayedFilmsCount());
   },
 });
-
-GenresList.propTypes = {
-  films: PropTypes.array.isRequired,
-  currentGenre: PropTypes.string.isRequired,
-  onGenreClick: PropTypes.func.isRequired,
-};
 
 export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

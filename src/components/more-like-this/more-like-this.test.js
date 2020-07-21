@@ -12,6 +12,7 @@ const mockStore = configureStore([]);
 describe(`Render MoreLikeThis`, () => {
   const store = mockStore({
     currentGenre: `All genres`,
+    displayedFilmsCount: 8,
     filmsByGenre: films,
     movie: film,
     films

@@ -13,6 +13,7 @@ const mockStore = configureStore([]);
 describe(`Render MovieCard`, () => {
   const store = mockStore({
     currentGenre: `All genres`,
+    displayedFilmsCount: 8,
     filmsByGenre: films,
     movie: film,
     films

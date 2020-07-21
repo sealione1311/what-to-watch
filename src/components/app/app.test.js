@@ -14,6 +14,7 @@ const onSmallCardClick = () => {};
 describe(`Render App`, () => {
   const store = mockStore({
     currentGenre: `All genres`,
+    displayedFilmsCount: 8,
     filmsByGenre: films,
     movie: film,
     films
