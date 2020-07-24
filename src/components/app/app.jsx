@@ -5,8 +5,11 @@ import Main from "../main/main.jsx";
 import MovieCard from '../movie-card/movie-card.jsx';
 import reviews from '../../mocks/reviews.js';
 import {connect} from "react-redux";
+import {Tab} from "../../utils/const.js";
+import withActiveItem from "../../hocs/with-active-item.js";
 
 const onTitleClick = () => {};
+const MovieCardWithTabs = withActiveItem(MovieCard);
 
 class App extends PureComponent {
   constructor(props) {
@@ -41,7 +44,8 @@ class App extends PureComponent {
   _renderMovieCard() {
     const currentCard = this.state.selectedMovie;
     return (
-      <MovieCard
+      <MovieCardWithTabs
+        activeItem = {Tab.OVERVIEW}
         movie = {currentCard}
         reviews = {reviews}
         films = {this.props.films}
