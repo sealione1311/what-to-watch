@@ -2,15 +2,15 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import withPlayer from "../../hocs/with-player.js";
 import {ActionCreator} from "../../redux/reducer.js";
 import {connect} from "react-redux";
+
+const MovieCardSmallwithPlayer = withPlayer(MovieCardSmall);
 
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeCard: null
-    };
   }
 
   render() {
@@ -18,15 +18,10 @@ class MoviesList extends PureComponent {
     const onSmallCardClick = this.props.onSmallCardClick;
     const moviesList = films.slice(0, displayedFilmsCount).map((movie, i) => {
       return (
-        <MovieCardSmall
+        <MovieCardSmallwithPlayer
           key={movie + i}
           movie={movie}
           onSmallCardClick={onSmallCardClick}
-          onCardHover = {(idActiveCard) => {
-            this.setState({
-              activeCard: idActiveCard,
-            });
-          }}
         />
       );
     });

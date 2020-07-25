@@ -22,6 +22,7 @@ describe(`Render MovieCard`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <MovieCard
+            activeItem = {`Overview`}
             films={films}
             movie={film}
             reviews={reviews}

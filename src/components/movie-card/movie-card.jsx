@@ -6,38 +6,19 @@ import DetailsTab from './../details-tab/details-tab.jsx';
 import ReviewsTab from '../reviews-tab/reviews-tab.jsx';
 import MoreLikeThis from '../more-like-this/more-like-this.jsx';
 import {connect} from "react-redux";
-
-const Tab = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`,
-};
+import {Tab} from "../../utils/const.js";
 
 const tabs = Object.values(Tab);
 
 class MovieCard extends PureComponent {
   constructor(props) {
-
     super(props);
-
-
-    this.state = {
-      activeTab: Tab.OVERVIEW,
-    };
-
-    this._handleTabClick = this._handleTabClick.bind(this);
-  }
-
-  _handleTabClick(tab) {
-    this.setState({
-      activeTab: tab,
-    });
   }
 
   _renderActiveTabInfo() {
-    const {movie, reviews} = this.props;
-    const {activeTab} = this.state;
-    switch (activeTab) {
+    const {movie, reviews, activeItem} = this.props;
+
+    switch (activeItem) {
       case Tab.OVERVIEW:
         return (<OverviewTab
           movie={movie}
@@ -66,7 +47,7 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {movie, films, onSmallCardClick} = this.props;
+    const {movie, films, onSmallCardClick, activeItem, onItemClick} = this.props;
     const activeTabInfo = this._renderActiveTabInfo();
     const moviesLikeThis = this._renderMoreLikeThis(films, movie);
     return (
@@ -131,11 +112,9 @@ class MovieCard extends PureComponent {
               <div className="movie-card__desc">
                 <MovieCardTabs
                   tabs={tabs}
-                  activeTab={this.state.activeTab}
-                  onTabClick={this._handleTabClick}
+                  activeTab={activeItem}
+                  onTabClick={onItemClick}
                 />
-
-
                 {activeTabInfo}
               </div>
             </div>
@@ -166,6 +145,8 @@ class MovieCard extends PureComponent {
   }
 }
 MovieCard.propTypes = {
+  onItemClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,

@@ -5,37 +5,25 @@ import VideoPlayer from '../video-player/video-player.jsx';
 export default class MovieCardSmall extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isPlaying: false,
-    };
   }
+
   render() {
     const movie = this.props.movie;
     const {id, smallImage, name, preview} = movie;
     const onSmallCardClick = this.props.onSmallCardClick;
-    const onCardHover = this.props.onCardHover;
+    const {onSmallMovieCardMouseOver, onSmallMovieCardMouseOut, isPlaying} = this.props;
     return (
       <Fragment>
         <article id={id}
-          onMouseOver = {() => {
-            this.setState({
-              isPlaying: true,
-            });
-            onCardHover(id);
-          }}
-          onMouseOut = {() => {
-            this.setState({
-              isPlaying: false,
-            });
-          }}
+          onMouseOver = {onSmallMovieCardMouseOver}
+          onMouseOut = {onSmallMovieCardMouseOut}
           onClick={(evt) => {
             evt.preventDefault();
             onSmallCardClick(movie);
           }} className="small-movie-card catalog__movies-card">
           <div className="small-movie-card__image">
             <VideoPlayer
-              isPlaying={this.state.isPlaying}
+              isPlaying={isPlaying}
               src={preview}
               poster={smallImage}
             />
@@ -51,8 +39,10 @@ export default class MovieCardSmall extends PureComponent {
 }
 
 MovieCardSmall.propTypes = {
+  isPlaying: PropTypes.bool.isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
+  onSmallMovieCardMouseOver: PropTypes.func.isRequired,
+  onSmallMovieCardMouseOut: PropTypes.func.isRequired,
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
