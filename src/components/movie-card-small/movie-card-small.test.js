@@ -13,10 +13,13 @@ describe(`Render MovieCardSmall`, () => {
   it(`Render MovieCardSmall`, () => {
     const tree = renderer.create(
         <MovieCardSmall
+          isPlaying = {true}
           movie = {film}
           onTitleClick = {() => {}}
           onCardHover = {() => {}}
           onSmallCardClick={() => {}}
+          onSmallMovieCardMouseOver={() => {}}
+          onSmallMovieCardMouseOut={() => {}}
         />, {
           createNodeMock: () => {
             return {};

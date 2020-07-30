@@ -12,5 +12,6 @@ export default {
   ratingCount: `740`,
   director: `Wes Anderson`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
-  runTime: `1h 39m`
+  runTime: `1h 39m`,
+  preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };

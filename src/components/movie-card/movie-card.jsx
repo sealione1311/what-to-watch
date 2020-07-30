@@ -5,6 +5,7 @@ import OverviewTab from './../overview-tab/overview-tab.jsx';
 import DetailsTab from './../details-tab/details-tab.jsx';
 import ReviewsTab from '../reviews-tab/reviews-tab.jsx';
 import MoreLikeThis from '../more-like-this/more-like-this.jsx';
+import {ActionCreator} from "../../redux/reducer.js";
 import {connect} from "react-redux";
 import {Tab} from "../../utils/const.js";
 
@@ -47,7 +48,7 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {movie, films, onSmallCardClick, activeItem, onItemClick} = this.props;
+    const {movie, films, onSmallCardClick, activeItem, onItemClick, onPlayButtonClick} = this.props;
     const activeTabInfo = this._renderActiveTabInfo();
     const moviesLikeThis = this._renderMoreLikeThis(films, movie);
     return (
@@ -85,7 +86,10 @@ class MovieCard extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button onClick={(evt) => {
+                    evt.preventDefault();
+                    onPlayButtonClick(movie);
+                  }} className="btn btn--play movie-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -144,7 +148,19 @@ class MovieCard extends PureComponent {
       </React.Fragment>);
   }
 }
+
+const mapStateToProps = (state) => ({
+  films: state.filmsByGenre
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick(movie) {
+    dispatch(ActionCreator.changePlayingMovie(movie));
+  }
+});
+
 MovieCard.propTypes = {
+  onPlayButtonClick: PropTypes.func.isRequired,
   onItemClick: PropTypes.func.isRequired,
   activeItem: PropTypes.string.isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
@@ -164,10 +180,6 @@ MovieCard.propTypes = {
   })
 };
 
-const mapStateToProps = (state) => ({
-  films: state.filmsByGenre
-});
-
 export {MovieCard};
-export default connect(mapStateToProps)(MovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
 
