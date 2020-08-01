@@ -27,6 +27,9 @@ describe(`Render MovieCard`, () => {
             movie={film}
             reviews={reviews}
             onSmallCardClick={onSmallCardClick}
+            onPlayButtonClick = {() => {}}
+            onItemClick = {() => {}}
+            onTabClick = {() => {}}
           /></Provider>, {
           createNodeMock: () => {
             return {};

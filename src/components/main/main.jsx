@@ -8,6 +8,7 @@ const Main = (props) => {
   const films = props.films;
   const onTitleClick = props.onTitleClick;
   const onSmallCardClick = props.onSmallCardClick;
+  const onPlayButtonClick = props.onPlayButtonClick;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -47,7 +48,10 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button onClick={(evt) => {
+                  evt.preventDefault();
+                  onPlayButtonClick(props.movie);
+                }} className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -97,6 +101,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  onPlayButtonClick: PropTypes.func.isRequired,
   onSmallCardClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,

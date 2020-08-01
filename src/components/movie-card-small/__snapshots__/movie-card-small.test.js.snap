@@ -5,6 +5,8 @@ exports[`Render MovieCardSmall Render MovieCardSmall 1`] = `
   className="small-movie-card catalog__movies-card"
   id={1}
   onClick={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"

@@ -22,6 +22,7 @@ describe(`Simulate title click`, () => {
           onTitleClick={onTitleClick}
           onMouseOver={onMouseOver}
           onSmallCardClick={onSmallCardClick}
+          onPlayButtonClick = {() => {}}
         />
     );
 

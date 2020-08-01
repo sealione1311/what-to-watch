@@ -26,6 +26,7 @@ describe(`Render Main`, () => {
         films = {films}
         onTitleClick = {onTitleClick}
         onSmallCardClick={onSmallCardClick}
+        onPlayButtonClick = {() => {}}
       /></Provider>, {
       createNodeMock: () => {
         return {};
