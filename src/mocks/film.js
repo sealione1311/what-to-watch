@@ -1,5 +1,5 @@
 export default {
-  bg: `img/bg-the-grand-budapest-hotel.jpg`,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
   smallImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   name: `The Grand Budapest Hotel`,

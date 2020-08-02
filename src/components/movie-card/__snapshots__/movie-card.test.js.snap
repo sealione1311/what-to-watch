@@ -293,35 +293,6 @@ Array [
             </a>
           </h3>
         </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          id={5}
-          onClick={[Function]}
-          onMouseOut={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              className="video-player"
-              height="175"
-              muted="muted"
-              poster="img/seven-years-in-tibet.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Seven Years in Tibet
-            </a>
-          </h3>
-        </article>
       </div>
       
     </section>

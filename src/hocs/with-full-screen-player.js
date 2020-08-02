@@ -46,7 +46,7 @@ const withFullScreenPlayer = (Component) => {
       const {movieCard} = this.props;
       const video = this._videoRef.current;
 
-      video.src = movieCard.preview;
+      video.src = movieCard.videoLink;
       video.poster = movieCard.poster;
       video.muted = false;
       video.onplay = () => this.setState({isPlaying: true});
@@ -100,7 +100,7 @@ const withFullScreenPlayer = (Component) => {
     movieCard: PropTypes.shape({
       name: PropTypes.string,
       poster: PropTypes.string.isRequired,
-      preview: PropTypes.string.isRequired,
+      videoLink: PropTypes.string.isRequired,
     }).isRequired,
   };
 

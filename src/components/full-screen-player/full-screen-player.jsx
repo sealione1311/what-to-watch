@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/state/state.js";
 import {connect} from "react-redux";
 
 const FullScreenPlayer = (props) => {

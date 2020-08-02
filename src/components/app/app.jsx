@@ -6,10 +6,13 @@ import MovieCard from '../movie-card/movie-card.jsx';
 import reviews from '../../mocks/reviews.js';
 import {connect} from "react-redux";
 import {Tab} from "../../utils/const.js";
-import {ActionCreator} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/state/state.js";
 import withActiveItem from "../../hocs/with-active-item.js";
 import withFullScreenPlayer from "../../hocs/with-full-screen-player.js";
 import FullScreenPlayer from "../../components/full-screen-player/full-screen-player.jsx";
+import {getMovie, getFilteredMoviesByGenre} from "../../redux/data/selectors.js";
+import {getCurrentSmallMovie, getPlayingMovie} from "../../redux/state/selectors.js";
+
 
 const onTitleClick = () => {};
 const MovieCardWithTabs = withActiveItem(MovieCard);
@@ -83,10 +86,10 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  films: state.filmsByGenre,
-  movie: state.movie,
-  selectedSmallMovie: state.currentSmallMovie,
-  playingMovie: state.playingMovie,
+  films: getFilteredMoviesByGenre(state),
+  movie: getMovie(state),
+  selectedSmallMovie: getCurrentSmallMovie(state),
+  playingMovie: getPlayingMovie(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -102,8 +105,6 @@ App.propTypes = {
   smallCardClickHandler: PropTypes.func.isRequired,
   playButtonClickHandler: PropTypes.func.isRequired,
   selectedSmallMovie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.string.isRequired,
@@ -114,8 +115,6 @@ App.propTypes = {
     starring: PropTypes.array.isRequired,
   }),
   playingMovie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.string.isRequired,
@@ -128,8 +127,6 @@ App.propTypes = {
   }),
   films: PropTypes.array.isRequired,
   movie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.string.isRequired,

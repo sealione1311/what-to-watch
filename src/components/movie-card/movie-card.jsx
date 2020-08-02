@@ -5,9 +5,11 @@ import OverviewTab from './../overview-tab/overview-tab.jsx';
 import DetailsTab from './../details-tab/details-tab.jsx';
 import ReviewsTab from '../reviews-tab/reviews-tab.jsx';
 import MoreLikeThis from '../more-like-this/more-like-this.jsx';
-import {ActionCreator} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/state/state.js";
 import {connect} from "react-redux";
 import {Tab} from "../../utils/const.js";
+import {getFilteredMoviesByGenre} from "../../redux/data/selectors.js";
+
 
 const tabs = Object.values(Tab);
 
@@ -56,7 +58,7 @@ class MovieCard extends PureComponent {
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src={movie.bg} alt={movie.name} />
+              <img src={movie.backgroundImage} alt={movie.name} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -150,7 +152,8 @@ class MovieCard extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  films: state.filmsByGenre
+  films: getFilteredMoviesByGenre(state)
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -167,8 +170,9 @@ MovieCard.propTypes = {
   films: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
   movie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
+    smallImage: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.string.isRequired,
