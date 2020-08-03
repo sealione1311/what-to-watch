@@ -5,16 +5,24 @@ import films from "../../mocks/films.js";
 import film from "../../mocks/film.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import NameSpace from '../../redux/name-space';
 
 const mockStore = configureStore([]);
 
 
 describe(`Should render GenresList correctly`, () => {
   const store = mockStore({
-    currentGenre: `All genres`,
-    filmsByGenre: films,
-    movie: film,
-    films
+    [NameSpace.DATA]: {
+      movie: film,
+      films
+    },
+
+    [NameSpace.STATE]: {
+      currentGenre: `All genres`,
+      playingMovie: null,
+      currentSmallMovie: null,
+      displayedFilmsCount: 8,
+    }
   });
   it(`Should render correctly`, () => {
     const tree = renderer

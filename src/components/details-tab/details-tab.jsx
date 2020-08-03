@@ -43,7 +43,7 @@ const DetailsTab = (props) => {
 
 DetailsTab.propTypes = {
   movie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

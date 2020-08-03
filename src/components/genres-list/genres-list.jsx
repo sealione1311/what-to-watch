@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ActionCreator, ALL_GENRES} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/state/state.js";
+import {ALL_GENRES} from "../../utils/const.js";
 import {connect} from "react-redux";
+import {getMovies} from "../../redux/data/selectors.js";
+import {getActiveGenre} from "../../redux/state/selectors.js";
 
 const getGenreList = (films) => {
   const genres = new Set(films.map((film) => film.genre));
   return [ALL_GENRES, ...genres];
-};
-
-const filterMoviesByGenre = (allFilms, currentGenre) => {
-  if (currentGenre === ALL_GENRES) {
-    return allFilms;
-  }
-  return allFilms.filter((movie) => movie.genre === currentGenre);
 };
 
 const GenresList = ({currentGenre, onGenreClick, films}) => {
@@ -44,15 +40,13 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
-  films: state.films
+  currentGenre: getActiveGenre(state),
+  films: getMovies(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreClick(genre, films) {
+  onGenreClick(genre) {
     dispatch(ActionCreator.setCurrentGenre(genre));
-    const filmsByGenre = filterMoviesByGenre(films, genre);
-    dispatch(ActionCreator.setFiltredFilmsByGenre(filmsByGenre));
     dispatch(ActionCreator.resetDisplayedFilmsCount());
   },
 });

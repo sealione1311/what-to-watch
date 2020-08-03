@@ -4,7 +4,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 const Main = (props) => {
 
-  const {name: movieTitle, genre: movieGenre, released: movieDate} = props.movie;
+  const {name: movieTitle, genre: movieGenre, released: movieDate, poster: moviePoster, backgroundImage: movieBackgroundImage} = props.movie;
   const films = props.films;
   const onTitleClick = props.onTitleClick;
   const onSmallCardClick = props.onSmallCardClick;
@@ -13,7 +13,7 @@ const Main = (props) => {
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={movieBackgroundImage} alt={movieTitle} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -37,7 +37,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={moviePoster} alt={movieTitle} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -106,8 +106,8 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   movie: PropTypes.shape({
-    bg: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.string.isRequired,

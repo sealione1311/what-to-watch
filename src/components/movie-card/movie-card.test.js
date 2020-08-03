@@ -6,17 +6,24 @@ import films from '../../mocks/films.js';
 import film from '../../mocks/film.js';
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import NameSpace from '../../redux/name-space';
 
 const onSmallCardClick = () => {};
 const mockStore = configureStore([]);
 
 describe(`Render MovieCard`, () => {
   const store = mockStore({
-    currentGenre: `All genres`,
-    displayedFilmsCount: 8,
-    filmsByGenre: films,
-    movie: film,
-    films
+    [NameSpace.DATA]: {
+      movie: film,
+      films
+    },
+
+    [NameSpace.STATE]: {
+      currentGenre: `All genres`,
+      playingMovie: null,
+      currentSmallMovie: null,
+      displayedFilmsCount: 8,
+    }
   });
   it(`Render MovieCard`, () => {
     const tree = renderer.create(

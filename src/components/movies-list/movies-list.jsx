@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import withPlayer from "../../hocs/with-player.js";
-import {ActionCreator} from "../../redux/reducer.js";
+import {ActionCreator} from "../../redux/state/state.js";
 import {connect} from "react-redux";
-
+import {getDisplayedFilmsCount} from "../../redux/state/selectors.js";
 const MovieCardSmallwithPlayer = withPlayer(MovieCardSmall);
 
 class MoviesList extends PureComponent {
@@ -47,7 +47,7 @@ MoviesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  displayedFilmsCount: state.displayedFilmsCount
+  displayedFilmsCount: getDisplayedFilmsCount(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
