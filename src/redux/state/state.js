@@ -6,6 +6,7 @@ const initialState = {
   playingMovie: null,
   currentSmallMovie: null,
   displayedFilmsCount: DISPLAYED_FILMS_COUNT,
+  authScreen: false,
 };
 
 const ActionCreator = {
@@ -41,6 +42,19 @@ const ActionCreator = {
       type: ActionType.CHANGE_PLAYING_MOVIE,
       payload: movie,
     };
+  },
+
+  renderSignInPage: () => {
+    return {
+      type: ActionType.RENDER_SIGN_IN_PAGE,
+      payload: true,
+    };
+  },
+  renderMainPage: () => {
+    return {
+      type: ActionType.RENDER_MAIN_PAGE,
+      payload: false,
+    };
   }
 };
 
@@ -69,6 +83,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_PLAYING_MOVIE:
       return Object.assign({}, state, {
         playingMovie: action.payload,
+      });
+    case ActionType.RENDER_SIGN_IN_PAGE:
+      return Object.assign({}, state, {
+        authScreen: action.payload,
+      });
+    case ActionType.RENDER_MAIN_PAGE:
+      return Object.assign({}, state, {
+        authScreen: action.payload,
       });
   }
   return state;

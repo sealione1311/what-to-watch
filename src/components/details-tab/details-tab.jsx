@@ -42,19 +42,7 @@ const DetailsTab = (props) => {
 };
 
 DetailsTab.propTypes = {
-  movie: PropTypes.shape({
-    backgroundImage: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    ratingCount: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
-    runTime: PropTypes.string.isRequired,
-  })
+  movie: PropTypes.object.isRequired
 };
 
 export default DetailsTab;

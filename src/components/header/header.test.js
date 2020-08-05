@@ -1,18 +1,18 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
 import films from "../../mocks/films.js";
 import film from "../../mocks/film.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from '../../redux/name-space';
+import {AuthorizationStatus} from "../../redux/user/user.js";
 
 const mockStore = configureStore([]);
 
-const onTitleClick = () => {};
-const onSmallCardClick = () => {};
+import Header from "./header.jsx";
 
-describe(`Render App`, () => {
+
+it(`Header component render correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       movie: film,
@@ -29,19 +29,12 @@ describe(`Render App`, () => {
       authorizationStatus: `NO_AUTH`,
     }
   });
-  it(`Render App`, () => {
-    const tree = renderer
-    .create(<Provider store={store}>
-      <App
-        onTitleClick = {onTitleClick}
-        onSmallCardClick={onSmallCardClick}
-      /></Provider>, {
-      createNodeMock: () => {
-        return {};
-      }
-    })
-    .toJSON();
+  const tree = renderer.create(<Provider store={store}>
+    <Header
+      authorizationStatus={AuthorizationStatus.NO_AUTH}
+      onSignInClick={() => {}}
+    /></Provider>
+  ).toJSON();
 
-    expect(tree).toMatchSnapshot();
-  });
+  expect(tree).toMatchSnapshot();
 });
