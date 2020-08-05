@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
+import Header from '../header/header.jsx';
 const Main = (props) => {
 
   const {name: movieTitle, genre: movieGenre, released: movieDate, poster: moviePoster, backgroundImage: movieBackgroundImage} = props.movie;
@@ -18,22 +19,7 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
-
+        <Header />
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
@@ -106,14 +92,14 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   movie: PropTypes.shape({
-    poster: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    poster: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    name: PropTypes.string,
     genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    ratingCount: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingCount: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.array.isRequired,
   })

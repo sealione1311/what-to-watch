@@ -9,3 +9,5 @@ export const getPlayingMovie = (state) => state[NAME_SPACE].playingMovie;
 export const getActiveGenre = (state) => state[NAME_SPACE].currentGenre;
 
 export const getDisplayedFilmsCount = (state) => state[NAME_SPACE].displayedFilmsCount;
+
+export const getSignInStatus = (state) => state[NAME_SPACE].authScreen;

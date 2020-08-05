@@ -17,12 +17,14 @@ describe(`Render MovieCard`, () => {
       movie: film,
       films
     },
-
     [NameSpace.STATE]: {
       currentGenre: `All genres`,
       playingMovie: null,
       currentSmallMovie: null,
       displayedFilmsCount: 8,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `NO_AUTH`,
     }
   });
   it(`Render MovieCard`, () => {

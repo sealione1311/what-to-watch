@@ -23,6 +23,9 @@ describe(`Render Main`, () => {
       playingMovie: null,
       currentSmallMovie: null,
       displayedFilmsCount: 8,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `NO_AUTH`,
     }
   });
   it(`Render Main`, () => {

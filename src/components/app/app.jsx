@@ -11,7 +11,10 @@ import withActiveItem from "../../hocs/with-active-item.js";
 import withFullScreenPlayer from "../../hocs/with-full-screen-player.js";
 import FullScreenPlayer from "../../components/full-screen-player/full-screen-player.jsx";
 import {getMovie, getFilteredMoviesByGenre} from "../../redux/data/selectors.js";
-import {getCurrentSmallMovie, getPlayingMovie} from "../../redux/state/selectors.js";
+import {getCurrentSmallMovie, getPlayingMovie, getSignInStatus} from "../../redux/state/selectors.js";
+import {Operation as UserOperation} from "../../redux/user/user.js";
+import {getAuthorizationStatus} from "../../redux/user/selectors.js";
+import {SignIn} from "../sign-in/sign-in.jsx";
 
 
 const onTitleClick = () => {};
@@ -25,8 +28,15 @@ class App extends PureComponent {
   }
 
   _renderApp() {
+    const {login} = this.props;
     const selectedMovie = this.props.selectedSmallMovie;
     const playingMovie = this.props.playingMovie;
+    const signInPage = this.props.signInPage;
+    if (signInPage) {
+      return <SignIn
+        onFormSubmit={login}
+      />;
+    }
     if (playingMovie) {
       return <FullScreenPlayerWrapped movieCard={playingMovie}
         isPlaying = {true}/>;
@@ -70,6 +80,7 @@ class App extends PureComponent {
   }
 
   render() {
+
     return (
       <BrowserRouter>
         <Switch>
@@ -79,6 +90,7 @@ class App extends PureComponent {
           <Route exact path="/card">
             {this._renderMovieCard()}
           </Route>
+
         </Switch>
       </BrowserRouter>
     );
@@ -90,9 +102,15 @@ const mapStateToProps = (state) => ({
   movie: getMovie(state),
   selectedSmallMovie: getCurrentSmallMovie(state),
   playingMovie: getPlayingMovie(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  signInPage: getSignInStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+    dispatch(ActionCreator.renderMainPage());
+  },
   smallCardClickHandler(movie) {
     dispatch(ActionCreator.setCurrentSmallMovie(movie));
   },
@@ -102,40 +120,15 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
+  signInPage: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
   smallCardClickHandler: PropTypes.func.isRequired,
   playButtonClickHandler: PropTypes.func.isRequired,
-  selectedSmallMovie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    ratingCount: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
-  }),
-  playingMovie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    ratingCount: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
-    preview: PropTypes.string.isRequired,
-  }),
+  selectedSmallMovie: PropTypes.object,
+  playingMovie: PropTypes.object,
   films: PropTypes.array.isRequired,
-  movie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    ratingCount: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
-  })
+  movie: PropTypes.object.isRequired,
 };
 
 export {App};
