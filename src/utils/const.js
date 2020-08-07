@@ -4,6 +4,14 @@ const Tab = {
   REVIEWS: `Reviews`,
 };
 
+export const AppRoute = {
+  LOGIN: `/login`,
+  CARD: `/film`,
+  MY_LIST: `/my-list`,
+  ROOT: `/`,
+  PLAYER: `/player`
+};
+
 const ALL_GENRES = `All genres`;
 
 const DISPLAYED_FILMS_COUNT = 8;

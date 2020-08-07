@@ -1,6 +1,8 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {formatMovieDuration} from "../utils/utils.js";
+import {connect} from "react-redux";
+import {getCurrentMovieById} from "../redux/data/selectors.js";
 const withFullScreenPlayer = (Component) => {
   class WithFullScreenPlayer extends PureComponent {
     constructor(props) {
@@ -95,6 +97,10 @@ const withFullScreenPlayer = (Component) => {
     }
   }
 
+  const mapStateToProps = (state, props) => ({
+    movieCard: getCurrentMovieById(state, props),
+  });
+
   WithFullScreenPlayer.propTypes = {
     isPlaying: PropTypes.bool.isRequired,
     movieCard: PropTypes.shape({
@@ -103,11 +109,9 @@ const withFullScreenPlayer = (Component) => {
       videoLink: PropTypes.string.isRequired,
     }).isRequired,
   };
-
-  return WithFullScreenPlayer;
-
+  return connect(mapStateToProps)(WithFullScreenPlayer);
 };
 
-
 export default withFullScreenPlayer;
+
 

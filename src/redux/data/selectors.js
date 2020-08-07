@@ -27,3 +27,13 @@ export const getFilteredMoviesByGenre = createSelector(
     }
 );
 
+const getMovieById = (movies, id) => {
+
+  return movies.find((movie) => movie.id === id);
+};
+
+export const getCurrentMovieById = (state, prop) => {
+
+  return getMovieById(getMovies(state), prop.propId);
+};
+

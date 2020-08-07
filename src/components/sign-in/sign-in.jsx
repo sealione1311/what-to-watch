@@ -1,16 +1,13 @@
-
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {getErrorAuthorizationStatus} from "../../redux/user/selectors.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/const.js";
 
 class SignIn extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
-
+    this._loginRef = createRef();
+    this._passwordRef = createRef();
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
@@ -34,8 +31,8 @@ class SignIn extends PureComponent {
     evt.preventDefault();
 
     onFormSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
+      login: this._loginRef.current.value,
+      password: this._passwordRef.current.value,
     });
   }
 
@@ -44,11 +41,11 @@ class SignIn extends PureComponent {
       <div className="user-page">
         <header className="page-header user-page__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link to={AppRoute.ROOT} className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>
@@ -64,7 +61,7 @@ class SignIn extends PureComponent {
                   name="user-email"
                   id="user-email"
                   required
-                  ref={this.loginRef}
+                  ref={this._loginRef}
                 />
                 <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
               </div>
@@ -76,7 +73,7 @@ class SignIn extends PureComponent {
                   name="user-password"
                   id="user-password"
                   required
-                  ref={this.passwordRef}
+                  ref={this._passwordRef}
                 />
                 <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
               </div>
@@ -102,15 +99,12 @@ class SignIn extends PureComponent {
     );
   }
 }
-const mapStateToProps = (state) => ({
-  isErrorAuth: getErrorAuthorizationStatus(state)
-});
 
 SignIn.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
   isErrorAuth: PropTypes.bool.isRequired
 };
 
-export {SignIn};
-export default connect(mapStateToProps)(SignIn);
+export default SignIn;
+
 

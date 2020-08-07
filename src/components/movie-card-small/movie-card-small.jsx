@@ -1,6 +1,8 @@
 import React, {PureComponent, Fragment} from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from '../video-player/video-player.jsx';
+import {AppRoute} from "../../utils/const.js";
+import {Link} from "react-router-dom";
 
 export default class MovieCardSmall extends PureComponent {
   constructor(props) {
@@ -10,24 +12,22 @@ export default class MovieCardSmall extends PureComponent {
   render() {
     const movie = this.props.movie;
     const {id, smallImage, name, preview} = movie;
-    const onSmallCardClick = this.props.onSmallCardClick;
     const {onSmallMovieCardMouseOver, onSmallMovieCardMouseOut, isPlaying} = this.props;
     return (
       <Fragment>
         <article id={id}
           onMouseOver = {onSmallMovieCardMouseOver}
           onMouseOut = {onSmallMovieCardMouseOut}
-          onClick={(evt) => {
-            evt.preventDefault();
-            onSmallCardClick(movie);
-          }} className="small-movie-card catalog__movies-card">
-          <div className="small-movie-card__image">
-            <VideoPlayer
-              isPlaying={isPlaying}
-              src={preview}
-              poster={smallImage}
-            />
-          </div>
+          className="small-movie-card catalog__movies-card">
+          <Link to={`${AppRoute.CARD}/${id}`}>
+            <div className="small-movie-card__image">
+              <VideoPlayer
+                isPlaying={isPlaying}
+                src={preview}
+                poster={smallImage}
+              />
+            </div>
+          </Link>
           <h3 className="small-movie-card__title">
             <a className="small-movie-card__link" href="movie-page.html">{name}</a>
           </h3>
@@ -38,9 +38,9 @@ export default class MovieCardSmall extends PureComponent {
   }
 }
 
+
 MovieCardSmall.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  onSmallCardClick: PropTypes.func.isRequired,
   onSmallMovieCardMouseOver: PropTypes.func.isRequired,
   onSmallMovieCardMouseOut: PropTypes.func.isRequired,
   movie: PropTypes.shape({
@@ -50,3 +50,5 @@ MovieCardSmall.propTypes = {
     preview: PropTypes.string.isRequired,
   })
 };
+
+

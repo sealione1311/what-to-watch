@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import Header from '../header/header.jsx';
+import {AppRoute} from "../../utils/const.js";
+import {Link} from 'react-router-dom';
 const Main = (props) => {
 
-  const {name: movieTitle, genre: movieGenre, released: movieDate, poster: moviePoster, backgroundImage: movieBackgroundImage} = props.movie;
+  const {name: movieTitle, genre: movieGenre, released: movieDate, poster: moviePoster, backgroundImage: movieBackgroundImage, id, isFavorite} = props.movie;
   const films = props.films;
-  const onTitleClick = props.onTitleClick;
-  const onSmallCardClick = props.onSmallCardClick;
-  const onPlayButtonClick = props.onPlayButtonClick;
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -34,21 +34,33 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button onClick={(evt) => {
-                  evt.preventDefault();
-                  onPlayButtonClick(props.movie);
-                }} className="btn btn--play movie-card__button" type="button">
+                <Link
+                  className="btn btn--play movie-card__button"
+                  to={`${AppRoute.PLAYER}/${id}`}
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
+                </Link>
+                <button className="btn btn--list movie-card__button" type="button"
+                  onClick = {() => {}}
+                >{(isFavorite)
+                    ?
+
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+
+                    :
+
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+
+                  }<span>My list</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+
               </div>
             </div>
           </div>
@@ -63,8 +75,6 @@ const Main = (props) => {
           />
           <MoviesList
             films={films}
-            onTitleClick={onTitleClick}
-            onSmallCardClick={onSmallCardClick}
           />
         </section>
 
@@ -87,23 +97,8 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onSmallCardClick: PropTypes.func.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
-  movie: PropTypes.shape({
-    poster: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    name: PropTypes.string,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
-  })
-
+  movie: PropTypes.object.isRequired
 };
-
 export default Main;
+

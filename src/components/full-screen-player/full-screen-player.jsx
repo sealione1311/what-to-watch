@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../redux/state/state.js";
 import {connect} from "react-redux";
+import history from "../../history.js";
 
 const FullScreenPlayer = (props) => {
   const {
@@ -11,18 +12,16 @@ const FullScreenPlayer = (props) => {
     onFullScreenButtonClick,
     getPlaybackProgress,
     getRestOfTime,
-    onExitButtonClick,
     children,
   } = props;
 
   return (
     <div className="player">
       {children}
-
       <button
         type="button"
         className="player__exit"
-        onClick={onExitButtonClick}
+        onClick={() => history.goBack()}
       >
         Exit
       </button>

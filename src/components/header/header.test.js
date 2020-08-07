@@ -6,11 +6,9 @@ import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import NameSpace from '../../redux/name-space';
 import {AuthorizationStatus} from "../../redux/user/user.js";
-
-const mockStore = configureStore([]);
-
 import Header from "./header.jsx";
 
+const mockStore = configureStore([]);
 
 it(`Header component render correctly`, () => {
   const store = mockStore({

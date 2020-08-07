@@ -15,13 +15,11 @@ class MoviesList extends PureComponent {
 
   render() {
     const {films, displayedFilmsCount, onShowMoreButtonClick} = this.props;
-    const onSmallCardClick = this.props.onSmallCardClick;
     const moviesList = films.slice(0, displayedFilmsCount).map((movie, i) => {
       return (
         <MovieCardSmallwithPlayer
           key={movie + i}
           movie={movie}
-          onSmallCardClick={onSmallCardClick}
         />
       );
     });
@@ -40,7 +38,6 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  onSmallCardClick: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
   displayedFilmsCount: PropTypes.number.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,

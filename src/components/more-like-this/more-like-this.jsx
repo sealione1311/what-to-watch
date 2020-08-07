@@ -4,7 +4,7 @@ import MoviesList from '../movies-list/movies-list.jsx';
 const MAX_MOVIES_COUNT = 4;
 
 const MoreLikeThis = (props) => {
-  const {filteredMovies, onSmallCardClick} = props;
+  const {filteredMovies} = props;
   const filteredMoviesList = filteredMovies.slice(0, MAX_MOVIES_COUNT);
   return (
     <section className="catalog catalog--like-this">
@@ -12,15 +12,12 @@ const MoreLikeThis = (props) => {
 
       <MoviesList
         films={filteredMoviesList}
-        onSmallCardClick={onSmallCardClick}
       />
     </section>
   );
-
 };
 
 MoreLikeThis.propTypes = {
-  onSmallCardClick: PropTypes.func.isRequired,
   filteredMovies: PropTypes.array.isRequired
 };
 

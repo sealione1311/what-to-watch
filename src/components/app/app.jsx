@@ -1,98 +1,83 @@
 import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch, Router} from 'react-router-dom';
 import Main from "../main/main.jsx";
 import MovieCard from '../movie-card/movie-card.jsx';
 import reviews from '../../mocks/reviews.js';
 import {connect} from "react-redux";
-import {Tab} from "../../utils/const.js";
+import {Tab, AppRoute} from "../../utils/const.js";
 import {ActionCreator} from "../../redux/state/state.js";
 import withActiveItem from "../../hocs/with-active-item.js";
 import withFullScreenPlayer from "../../hocs/with-full-screen-player.js";
 import FullScreenPlayer from "../../components/full-screen-player/full-screen-player.jsx";
 import {getMovie, getFilteredMoviesByGenre} from "../../redux/data/selectors.js";
 import {getCurrentSmallMovie, getPlayingMovie, getSignInStatus} from "../../redux/state/selectors.js";
+import {getErrorAuthorizationStatus, getAuthorizationStatus} from "../../redux/user/selectors.js";
 import {Operation as UserOperation} from "../../redux/user/user.js";
-import {getAuthorizationStatus} from "../../redux/user/selectors.js";
-import {SignIn} from "../sign-in/sign-in.jsx";
-
-
-const onTitleClick = () => {};
+import SignIn from "../sign-in/sign-in.jsx";
+import MyList from "../../components/my-list/my-list.jsx";
+import history from "../../history.js";
+import PrivateRoute from "../../private-route.js";
 const MovieCardWithTabs = withActiveItem(MovieCard);
 const FullScreenPlayerWrapped = withFullScreenPlayer(FullScreenPlayer);
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-  }
-
-  _renderApp() {
-    const {login} = this.props;
-    const selectedMovie = this.props.selectedSmallMovie;
-    const playingMovie = this.props.playingMovie;
-    const signInPage = this.props.signInPage;
-    if (signInPage) {
-      return <SignIn
-        onFormSubmit={login}
-      />;
-    }
-    if (playingMovie) {
-      return <FullScreenPlayerWrapped movieCard={playingMovie}
-        isPlaying = {true}/>;
-    }
-
-    if (selectedMovie) {
-      return this._renderMovieCard();
-    } else {
-      return this._renderMain();
-    }
-  }
-
-  _renderMain() {
-    const smallCardClickHandler = this.props.smallCardClickHandler;
-    const playButtonClickHandler = this.props.playButtonClickHandler;
-    return (
-      <Main
-        movie={this.props.movie}
-        films = {this.props.films}
-        onTitleClick = {onTitleClick}
-        onSmallCardClick={smallCardClickHandler}
-        onPlayButtonClick={playButtonClickHandler}
-      />
-    );
-  }
-
-  _renderMovieCard() {
-    const currentCard = this.props.selectedSmallMovie;
-    const smallCardClickHandler = this.props.smallCardClickHandler;
-    const playButtonClickHandler = this.props.playButtonClickHandler;
-    return (
-      <MovieCardWithTabs
-        activeItem = {Tab.OVERVIEW}
-        movie = {currentCard}
-        reviews = {reviews}
-        films = {this.props.films}
-        onSmallCardClick={smallCardClickHandler}
-        onPlayButtonClick={playButtonClickHandler}
-      />
-    );
   }
 
   render() {
+    const {login, isErrorAuth} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
-          </Route>
-          <Route exact path="/card">
-            {this._renderMovieCard()}
-          </Route>
-
+          <Route exact path={AppRoute.ROOT}
+            render={() => {
+              return <Main
+                movie={this.props.movie}
+                films = {this.props.films}
+              />;
+            }}
+          />
+          <Route exact path={`${AppRoute.CARD}/:id`}
+            render={({match}) => {
+              return <MovieCardWithTabs
+                propId={Number(match.params.id)}
+                activeItem = {Tab.OVERVIEW}
+                reviews = {reviews}
+                films = {this.props.films}
+              />;
+            }}
+          />
+          <Route exact path={`${AppRoute.PLAYER}/:id`}
+            render={({match}) => {
+              return <FullScreenPlayerWrapped
+                propId={Number(match.params.id)}
+                isPlaying = {true}/>;
+            }}
+          />
+          <PrivateRoute
+            exact
+            path={AppRoute.MY_LIST}
+            render = {() => {
+              return (
+                <MyList />
+              );
+            }}>
+          </PrivateRoute>
+          <Route exact path={AppRoute.LOGIN}
+            render={() => {
+              return <SignIn
+                onFormSubmit={login}
+                isErrorAuth={isErrorAuth}
+              />;
+            }}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -103,7 +88,8 @@ const mapStateToProps = (state) => ({
   selectedSmallMovie: getCurrentSmallMovie(state),
   playingMovie: getPlayingMovie(state),
   authorizationStatus: getAuthorizationStatus(state),
-  signInPage: getSignInStatus(state)
+  signInPage: getSignInStatus(state),
+  isErrorAuth: getErrorAuthorizationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -111,9 +97,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(UserOperation.login(authData));
     dispatch(ActionCreator.renderMainPage());
   },
-  smallCardClickHandler(movie) {
-    dispatch(ActionCreator.setCurrentSmallMovie(movie));
-  },
+
   playButtonClickHandler(movie) {
     dispatch(ActionCreator.changePlayingMovie(movie));
   }
@@ -123,12 +107,9 @@ App.propTypes = {
   signInPage: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
-  smallCardClickHandler: PropTypes.func.isRequired,
-  playButtonClickHandler: PropTypes.func.isRequired,
-  selectedSmallMovie: PropTypes.object,
-  playingMovie: PropTypes.object,
   films: PropTypes.array.isRequired,
   movie: PropTypes.object.isRequired,
+  isErrorAuth: PropTypes.bool.isRequired
 };
 
 export {App};
