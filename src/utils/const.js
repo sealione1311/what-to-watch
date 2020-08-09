@@ -9,7 +9,16 @@ export const AppRoute = {
   CARD: `/film`,
   MY_LIST: `/my-list`,
   ROOT: `/`,
-  PLAYER: `/player`
+  PLAYER: `/player`,
+  REVIEW: `/review`
+};
+
+export const RATING_COUNT = 5;
+export const RATING_DEFAULT = 0;
+
+export const ReviewLength = {
+  MIN: 50,
+  MAX: 400
 };
 
 const ALL_GENRES = `All genres`;

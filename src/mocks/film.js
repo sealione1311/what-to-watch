@@ -1,4 +1,6 @@
 export default {
+  id: 1,
+  isFavorite: false,
   backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
   smallImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,

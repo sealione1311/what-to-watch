@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCardSmall from "../movie-card-small/movie-card-small.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
@@ -8,34 +8,28 @@ import {connect} from "react-redux";
 import {getDisplayedFilmsCount} from "../../redux/state/selectors.js";
 const MovieCardSmallwithPlayer = withPlayer(MovieCardSmall);
 
-class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const MoviesList = ({films, displayedFilmsCount, onShowMoreButtonClick}) => {
 
-  render() {
-    const {films, displayedFilmsCount, onShowMoreButtonClick} = this.props;
-    const moviesList = films.slice(0, displayedFilmsCount).map((movie, i) => {
-      return (
-        <MovieCardSmallwithPlayer
-          key={movie + i}
-          movie={movie}
-        />
-      );
-    });
+  const moviesList = films.slice(0, displayedFilmsCount).map((movie, i) => {
     return (
-      <React.Fragment>
-        <div className="catalog__movies-list">
-          {moviesList}
-        </div>
-        {films.length > displayedFilmsCount ? <ShowMoreButton
-          onShowMoreButtonClick={onShowMoreButtonClick}
-        /> : ``}
-      </React.Fragment>
+      <MovieCardSmallwithPlayer
+        key={movie + i}
+        movie={movie}
+      />
     );
-  }
+  });
+  return (
+    <React.Fragment>
+      <div className="catalog__movies-list">
+        {moviesList}
+      </div>
+      {films.length > displayedFilmsCount ? <ShowMoreButton
+        onShowMoreButtonClick={onShowMoreButtonClick}
+      /> : ``}
+    </React.Fragment>
+  );
+};
 
-}
 
 MoviesList.propTypes = {
   films: PropTypes.array.isRequired,

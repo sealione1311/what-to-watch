@@ -15,21 +15,25 @@ exports[`Render MoreLikeThis Render MoreLikeThis 1`] = `
     <article
       className="small-movie-card catalog__movies-card"
       id={1}
-      onClick={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      <div
-        className="small-movie-card__image"
+      <a
+        href="/film/1"
+        onClick={[Function]}
       >
-        <video
-          className="video-player"
-          height="175"
-          muted="muted"
-          poster="img/bohemian-rhapsody.jpg"
-          width="280"
-        />
-      </div>
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            className="video-player"
+            height="175"
+            muted="muted"
+            poster="img/bohemian-rhapsody.jpg"
+            width="280"
+          />
+        </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
@@ -44,21 +48,25 @@ exports[`Render MoreLikeThis Render MoreLikeThis 1`] = `
     <article
       className="small-movie-card catalog__movies-card"
       id={2}
-      onClick={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      <div
-        className="small-movie-card__image"
+      <a
+        href="/film/2"
+        onClick={[Function]}
       >
-        <video
-          className="video-player"
-          height="175"
-          muted="muted"
-          poster="img/johnny-english.jpg"
-          width="280"
-        />
-      </div>
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            className="video-player"
+            height="175"
+            muted="muted"
+            poster="img/johnny-english.jpg"
+            width="280"
+          />
+        </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
@@ -73,21 +81,25 @@ exports[`Render MoreLikeThis Render MoreLikeThis 1`] = `
     <article
       className="small-movie-card catalog__movies-card"
       id={3}
-      onClick={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      <div
-        className="small-movie-card__image"
+      <a
+        href="/film/3"
+        onClick={[Function]}
       >
-        <video
-          className="video-player"
-          height="175"
-          muted="muted"
-          poster="img/macbeth.jpg"
-          width="280"
-        />
-      </div>
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            className="video-player"
+            height="175"
+            muted="muted"
+            poster="img/macbeth.jpg"
+            width="280"
+          />
+        </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
@@ -102,21 +114,25 @@ exports[`Render MoreLikeThis Render MoreLikeThis 1`] = `
     <article
       className="small-movie-card catalog__movies-card"
       id={4}
-      onClick={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      <div
-        className="small-movie-card__image"
+      <a
+        href="/film/4"
+        onClick={[Function]}
       >
-        <video
-          className="video-player"
-          height="175"
-          muted="muted"
-          poster="img/no-country-for-old-men.jpg"
-          width="280"
-        />
-      </div>
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            className="video-player"
+            height="175"
+            muted="muted"
+            poster="img/no-country-for-old-men.jpg"
+            width="280"
+          />
+        </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >

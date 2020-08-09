@@ -4,34 +4,44 @@ import films from "../../mocks/films.js";
 import film from "../../mocks/film.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import NameSpace from '../../redux/name-space';
+import NameSpace from '../../redux/name-space.js';
 import {AuthorizationStatus} from "../../redux/user/user.js";
 import Header from "./header.jsx";
+import {Router} from "react-router-dom";
+import history from '../../history';
 
 const mockStore = configureStore([]);
 
 it(`Header component render correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
-      movie: film,
-      films
+      film,
+      films,
+      isLoading: false,
+      isErrorLoading: false,
     },
-
-    [NameSpace.STATE]: {
-      currentGenre: `All genres`,
-      playingMovie: null,
-      currentSmallMovie: null,
-      displayedFilmsCount: 8,
+    [NameSpace.APP_STATE]: {
+      activeGenre: `All genres`,
+      currentMovie: film,
     },
     [NameSpace.USER]: {
-      authorizationStatus: `NO_AUTH`,
-    }
+      authorizationStatus: `AUTH`,
+      isErrorAuth: false,
+      userInfo: {
+        id: 1,
+        email: `me@gmail.com`,
+        name: `12345`,
+        avatarUrl: `https://4.react.pages.academy/wtw/me.jpg`,
+      }
+    },
   });
-  const tree = renderer.create(<Provider store={store}>
-    <Header
-      authorizationStatus={AuthorizationStatus.NO_AUTH}
-      onSignInClick={() => {}}
-    /></Provider>
+  const tree = renderer.create(
+      <Router history={history}>
+        <Provider store={store}>
+          <Header
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+            onSignInClick={() => {}}
+          /></Provider></Router>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

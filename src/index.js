@@ -21,8 +21,8 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk.wit
 
 const rootElement = document.querySelector(`#root`);
 
-store.dispatch(DataOperation.getMovies());
 store.dispatch(DataOperation.getMovie());
+store.dispatch(DataOperation.getMovies());
 store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(

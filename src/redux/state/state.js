@@ -3,10 +3,8 @@ import {ALL_GENRES, DISPLAYED_FILMS_COUNT} from "../../utils/const.js";
 
 const initialState = {
   currentGenre: ALL_GENRES,
-  playingMovie: null,
-  currentSmallMovie: null,
+  currentMovie: null,
   displayedFilmsCount: DISPLAYED_FILMS_COUNT,
-  authScreen: false,
 };
 
 const ActionCreator = {
@@ -30,9 +28,9 @@ const ActionCreator = {
       payload: DISPLAYED_FILMS_COUNT,
     };
   },
-  setCurrentSmallMovie: (movie) => {
+  setCurrentMovie: (movie) => {
     return {
-      type: ActionType.SET_CURRENT_SMALL_MOVIE,
+      type: ActionType.SET_CURRENT_MOVIE,
       payload: movie,
     };
   },
@@ -65,9 +63,9 @@ const reducer = (state = initialState, action) => {
         currentGenre: action.payload,
       });
 
-    case ActionType.SET_CURRENT_SMALL_MOVIE:
+    case ActionType.SET_CURRENT_MOVIE:
       return Object.assign({}, state, {
-        currentSmallMovie: action.payload,
+        currentMovie: action.payload,
       });
 
     case ActionType.INCREASE_DISPLAYED_FILMS_COUNT:
@@ -78,11 +76,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_DISPLAYED_FILMS_COUNT:
       return Object.assign({}, state, {
         displayedFilmsCount: action.payload,
-      });
-
-    case ActionType.CHANGE_PLAYING_MOVIE:
-      return Object.assign({}, state, {
-        playingMovie: action.payload,
       });
     case ActionType.RENDER_SIGN_IN_PAGE:
       return Object.assign({}, state, {

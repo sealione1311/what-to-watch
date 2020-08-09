@@ -2,7 +2,7 @@ import NameSpace from '../name-space';
 
 const NAME_SPACE = NameSpace.STATE;
 
-export const getCurrentSmallMovie = (state) => state[NAME_SPACE].currentSmallMovie;
+export const getCurrentMovie = (state) => state[NAME_SPACE].currentMovie;
 
 export const getPlayingMovie = (state) => state[NAME_SPACE].playingMovie;
 

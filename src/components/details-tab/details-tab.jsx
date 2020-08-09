@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+export const getRunTimeFormat = (runTime) => {
+  const hours = Math.trunc(runTime / 60);
+  const minutes = runTime - (hours * 60);
+
+  return `${hours}h ${minutes}m`;
+};
+
 const DetailsTab = (props) => {
   const {director, starring, genre, runTime, released} = props.movie;
   return (
@@ -26,7 +33,7 @@ const DetailsTab = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{runTime}</span>
+          <span className="movie-card__details-value">{getRunTimeFormat(runTime)}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>

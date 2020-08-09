@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
+    isFavorite: false,
     backgroundImage: `https://placeimg.com/1000/550/arch`,
     poster: `https://placeimg.com/270/410/nature`,
     name: `Bohemian Rhapsody`,
@@ -17,6 +18,7 @@ export default [
   },
   {
     id: 2,
+    isFavorite: false,
     backgroundImage: `https://placeimg.com/1000/550/arch`,
     poster: `https://placeimg.com/270/410/nature`,
     name: `Johnny-english`,
@@ -33,6 +35,7 @@ export default [
   },
   {
     id: 3,
+    isFavorite: false,
     backgroundImage: `https://placeimg.com/1000/550/arch`,
     poster: `https://placeimg.com/270/410/nature`,
     name: `Macbeth`,
@@ -49,6 +52,7 @@ export default [
   },
   {
     id: 4,
+    isFavorite: false,
     backgroundImage: `https://placeimg.com/1000/550/arch`,
     poster: `https://placeimg.com/270/410/nature`,
     name: `No Country for Old Men`,

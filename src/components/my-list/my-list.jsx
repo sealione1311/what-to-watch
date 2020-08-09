@@ -1,134 +1,99 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/const.js";
+import {connect} from "react-redux";
+import {getUserInfo} from "../../redux/user/selectors.js";
+import {getFavoriteFilms} from "../../redux/data/selectors.js";
+import {Operation as DataOperation} from "../../redux/data/data.js";
+import MoviesList from "../../components/movies-list/movies-list.jsx";
 
-const MyList = () => {
-  return (
-    <React.Fragment>
-      <div className="user-page">
-        <header className="page-header user-page__head">
-          <div className="logo">
-            <Link to={AppRoute.ROOT} className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+class MyList extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-          <h1 className="page-title user-page__title">My list</h1>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+  componentDidMount() {
+    const {loadFavoriteMovies} = this.props;
+    loadFavoriteMovies();
+  }
+  render() {
+    const {user, favoriteFilms} = this.props;
+    return (
+      <React.Fragment>
+        <div className="user-page">
+          <header className="page-header user-page__head">
+            <div className="logo">
+              <Link to={AppRoute.ROOT} className="logo__link">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </Link>
             </div>
-          </div>
-        </header>
 
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
+            <h1 className="page-title user-page__title">My list</h1>
 
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+            <div className="user-block">
+              <div className="user-block__avatar">
+                <img src={`${user.avatarUrl}`} alt="User avatar" width="63" height="63" />
               </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
+            </div>
+          </header>
 
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-              </h3>
-            </article>
+          <section className="catalog">
+            <h2 className="catalog__title visually-hidden">Catalog</h2>
 
 
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/we-need-to-talk-about-kevin.jpg" alt="We need to talk about Kevin" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">We need to talk about Kevin</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/what-we-do-in-the-shadows.jpg" alt="What We Do in the Shadows" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">What We Do in the Shadows</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/revenant.jpg" alt="Revenant" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Revenant</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/johnny-english.jpg" alt="Johnny English" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Johnny English</a>
-              </h3>
-            </article>
+            <MoviesList
+              films={favoriteFilms}
+            />
 
 
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/shutter-island.jpg" alt="Shutter Island" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Shutter Island</a>
-              </h3>
-            </article>
-          </div>
-        </section>
+          </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <footer className="page-footer">
+            <div className="logo">
+              <a href="main.html" className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
-      </div>
-    </React.Fragment>
-  );
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+MyList.propTypes = {
+  loadFavoriteMovies: PropTypes.func.isRequired,
+  favoriteFilms: PropTypes.array.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+
+  }),
 };
 
-export default MyList;
+const mapStateToProps = (state) => ({
+  user: getUserInfo(state),
+  favoriteFilms: getFavoriteFilms(state)
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadFavoriteMovies() {
+    dispatch(DataOperation.getFavoriteFilms());
+  },
+});
+
+export {MyList};
+export default connect(mapStateToProps, mapDispatchToProps)(MyList);
+

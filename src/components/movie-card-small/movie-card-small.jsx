@@ -1,42 +1,35 @@
-import React, {PureComponent, Fragment} from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from '../video-player/video-player.jsx';
 import {AppRoute} from "../../utils/const.js";
 import {Link} from "react-router-dom";
 
-export default class MovieCardSmall extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const MovieCardSmall = ({movie, onSmallMovieCardMouseOver, onSmallMovieCardMouseOut, isPlaying}) => {
+  const {id, smallImage, name, preview} = movie;
 
-  render() {
-    const movie = this.props.movie;
-    const {id, smallImage, name, preview} = movie;
-    const {onSmallMovieCardMouseOver, onSmallMovieCardMouseOut, isPlaying} = this.props;
-    return (
-      <Fragment>
-        <article id={id}
-          onMouseOver = {onSmallMovieCardMouseOver}
-          onMouseOut = {onSmallMovieCardMouseOut}
-          className="small-movie-card catalog__movies-card">
-          <Link to={`${AppRoute.CARD}/${id}`}>
-            <div className="small-movie-card__image">
-              <VideoPlayer
-                isPlaying={isPlaying}
-                src={preview}
-                poster={smallImage}
-              />
-            </div>
-          </Link>
-          <h3 className="small-movie-card__title">
-            <a className="small-movie-card__link" href="movie-page.html">{name}</a>
-          </h3>
+  return (
+    <Fragment>
+      <article id={id}
+        onMouseOver = {onSmallMovieCardMouseOver}
+        onMouseOut = {onSmallMovieCardMouseOut}
+        className="small-movie-card catalog__movies-card">
+        <Link to={`${AppRoute.CARD}/${id}`}>
+          <div className="small-movie-card__image">
+            <VideoPlayer
+              isPlaying={isPlaying}
+              src={preview}
+              poster={smallImage}
+            />
+          </div>
+        </Link>
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+        </h3>
 
-        </article>
-      </Fragment>
-    );
-  }
-}
+      </article>
+    </Fragment>
+  );
+};
 
 
 MovieCardSmall.propTypes = {
@@ -50,5 +43,7 @@ MovieCardSmall.propTypes = {
     preview: PropTypes.string.isRequired,
   })
 };
+
+export default MovieCardSmall;
 
 

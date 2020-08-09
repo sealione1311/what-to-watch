@@ -5,9 +5,10 @@ import films from "../../mocks/films.js";
 import film from "../../mocks/film.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import NameSpace from '../../redux/name-space';
+import NameSpace from '../../redux/name-space.js';
+import {Router} from "react-router-dom";
+import history from '../../history';
 
-const onSmallCardClick = () => {};
 const mockStore = configureStore([]);
 
 describe(`Render MoreLikeThis`, () => {
@@ -27,11 +28,11 @@ describe(`Render MoreLikeThis`, () => {
   it(`Render MoreLikeThis`, () => {
     const tree = renderer
     .create(
-        <Provider store={store}>
-          <MoreLikeThis
-            filteredMovies = {films}
-            onSmallCardClick={onSmallCardClick}
-          /></Provider>, {
+        <Router history={history}>
+          <Provider store={store}>
+            <MoreLikeThis
+              filteredMovies = {films}
+            /></Provider></Router>, {
           createNodeMock: () => {
             return {};
           }

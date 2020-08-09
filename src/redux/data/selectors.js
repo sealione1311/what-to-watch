@@ -6,6 +6,13 @@ import {getActiveGenre} from "../state/selectors.js";
 
 export const getMovies = (state) => state[NameSpace.DATA].films;
 export const getMovie = (state) => state[NameSpace.DATA].movie;
+export const getReviews = (store) => store[NameSpace.DATA].movieReviews;
+export const getIsLoading = (state) => state[NameSpace.DATA].isLoading;
+export const getIsLoadError = (state) => state[NameSpace.DATA].isLoadError;
+export const getErrorStatus = (state) => state[NameSpace.DATA].isErrorLoading;
+export const getFavoriteFilms = (state) => state[NameSpace.DATA].favoriteFilms;
+export const getLoadingFavoriteFilm = (state) => state[NameSpace.DATA].isLoadingFavoriteFilm;
+
 
 export const getMoviesGenres = createSelector(
     getMovies,
@@ -36,4 +43,6 @@ export const getCurrentMovieById = (state, prop) => {
 
   return getMovieById(getMovies(state), prop.propId);
 };
+
+export const getIsReviewSending = (state) => state[NameSpace.DATA].isDataSending;
 

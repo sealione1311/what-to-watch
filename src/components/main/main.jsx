@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import Header from '../header/header.jsx';
+import AddMyListButton from "../../components/add-my-list-button/add-my-list-button.jsx";
 import {AppRoute} from "../../utils/const.js";
 import {Link} from 'react-router-dom';
 const Main = (props) => {
@@ -43,23 +44,10 @@ const Main = (props) => {
                   </svg>
                   <span>Play</span>
                 </Link>
-                <button className="btn btn--list movie-card__button" type="button"
-                  onClick = {() => {}}
-                >{(isFavorite)
-                    ?
-
-                    <svg viewBox="0 0 18 14" width="18" height="14">
-                      <use xlinkHref="#in-list"></use>
-                    </svg>
-
-                    :
-
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-
-                  }<span>My list</span>
-                </button>
+                <AddMyListButton
+                  isFavorite={isFavorite}
+                  id={id}
+                />
 
               </div>
             </div>
@@ -97,8 +85,9 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  films: PropTypes.array.isRequired,
-  movie: PropTypes.object.isRequired
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movie: PropTypes.object.isRequired,
 };
+
 export default Main;
 

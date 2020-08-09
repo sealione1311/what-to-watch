@@ -1,15 +1,24 @@
+import history from '../../history';
+import {createUser} from "../../utils/adapter.js";
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
 const initialState = {
+  userInfo: {
+    id: 0,
+    email: ``,
+    name: ``,
+    avatarUrl: ``,
+  },
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isErrorAuth: false
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  CHECK_ERROR_AUTHORIZATION: `CHECK_ERROR_AUTHORIZATION`
+  CHECK_ERROR_AUTHORIZATION: `CHECK_ERROR_AUTHORIZATION`,
+  GET_USER_DATA: `GET_USER_DATA`,
 };
 
 const ActionCreator = {
@@ -24,7 +33,13 @@ const ActionCreator = {
       type: ActionType.CHECK_ERROR_AUTHORIZATION,
       payload: error,
     };
-  }
+  },
+  getUserData: (userData) => {
+    return {
+      type: ActionType.GET_USER_DATA,
+      payload: userData,
+    };
+  },
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -36,6 +51,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isErrorAuth: action.payload,
       });
+    case ActionType.GET_USER_DATA:
+      return Object.assign({}, state, {
+        userInfo: action.payload,
+      });
   }
   return state;
 };
@@ -43,13 +62,15 @@ const reducer = (state = initialState, action) => {
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.getUserData(createUser(response.data)));
         dispatch(ActionCreator.checkErrorAuthorization(false));
+
       })
-      .catch((err) => {
+      .catch(() => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
         dispatch(ActionCreator.checkErrorAuthorization(true));
-        throw err;
       });
   },
 
@@ -58,8 +79,10 @@ const Operation = {
       email: authData.login,
       password: authData.password,
     })
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.getUserData(createUser(response.data)));
+        history.goBack();
       });
   },
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieCardSmall from "./movie-card-small.jsx";
+import {Router} from 'react-router-dom';
+import history from "../../history.js";
 
 const film = {
   id: 1,
@@ -12,15 +14,14 @@ const film = {
 describe(`Render MovieCardSmall`, () => {
   it(`Render MovieCardSmall`, () => {
     const tree = renderer.create(
-        <MovieCardSmall
-          isPlaying = {true}
-          movie = {film}
-          onTitleClick = {() => {}}
-          onCardHover = {() => {}}
-          onSmallCardClick={() => {}}
-          onSmallMovieCardMouseOver={() => {}}
-          onSmallMovieCardMouseOut={() => {}}
-        />, {
+        <Router history={history}>
+          <MovieCardSmall
+            isPlaying = {true}
+            movie = {film}
+            onSmallMovieCardMouseOver={() => {}}
+            onSmallMovieCardMouseOut={() => {}}
+          />
+        </Router>, {
           createNodeMock: () => {
             return {};
           }

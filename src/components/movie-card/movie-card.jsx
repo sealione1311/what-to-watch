@@ -5,24 +5,35 @@ import OverviewTab from './../overview-tab/overview-tab.jsx';
 import DetailsTab from './../details-tab/details-tab.jsx';
 import ReviewsTab from '../reviews-tab/reviews-tab.jsx';
 import MoreLikeThis from '../more-like-this/more-like-this.jsx';
+import AddMyListButton from "../../components/add-my-list-button/add-my-list-button.jsx";
 import {connect} from "react-redux";
 import {Tab} from "../../utils/const.js";
 import {Link} from 'react-router-dom';
 import {AppRoute} from "../../utils/const.js";
 import {getFilteredMoviesByGenre, getCurrentMovieById} from "../../redux/data/selectors.js";
 import Header from '../header/header.jsx';
+import {Operation as DataOperation} from "../../redux/data/data.js";
+import {ActionCreator} from "../../redux/state/state.js";
 
 const tabs = Object.values(Tab);
 
 class MovieCard extends PureComponent {
   constructor(props) {
-
     super(props);
+  }
 
+  componentDidMount() {
+    const {movie, getMovieDetails} = this.props;
+    getMovieDetails(movie);
+  }
+
+  componentDidUpdate() {
+    const {movie, getMovieDetails} = this.props;
+    getMovieDetails(movie);
   }
 
   _renderActiveTabInfo() {
-    const {movie, reviews, activeItem} = this.props;
+    const {movie, activeItem} = this.props;
 
     switch (activeItem) {
       case Tab.OVERVIEW:
@@ -35,7 +46,6 @@ class MovieCard extends PureComponent {
         />);
       case Tab.REVIEWS:
         return (<ReviewsTab
-          reviews={reviews}
         />);
       default:
         return (<OverviewTab
@@ -54,12 +64,11 @@ class MovieCard extends PureComponent {
 
   render() {
     const {movie, films, activeItem, onItemClick} = this.props;
-    const {isFavorite} = movie;
     const activeTabInfo = this._renderActiveTabInfo();
     const moviesLikeThis = this._renderMoreLikeThis(films, movie);
     return (
       <React.Fragment>
-        <section className="movie-card movie-card--full">
+        <section className="movie-card movie-card--full" style={{backgroundColor: `${movie.backgroundColor}`}}>
           <div className="movie-card__hero">
             <div className="movie-card__bg">
               <img src={movie.backgroundImage} alt={movie.name} />
@@ -85,24 +94,14 @@ class MovieCard extends PureComponent {
                     </svg>
                     <span>Play</span>
                   </Link>
-                  <button className="btn btn--list movie-card__button" type="button"
-                    onClick = {() => {}}
-                  >{(isFavorite)
-                      ?
-
-                      <svg viewBox="0 0 18 14" width="18" height="14">
-                        <use xlinkHref="#in-list"></use>
-                      </svg>
-
-                      :
-
-                      <svg viewBox="0 0 19 20" width="19" height="20">
-                        <use xlinkHref="#add"></use>
-                      </svg>
-
-                    }<span>My list</span>
-                  </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <AddMyListButton
+                    isFavorite={movie.isFavorite}
+                    id={movie.id}
+                  />
+                  <Link to={`${AppRoute.CARD}/${movie.id}${AppRoute.REVIEW}`}
+                    className="btn btn--review movie-card__button">
+                      Add review
+                  </Link>
                 </div>
               </div>
             </div>
@@ -133,11 +132,11 @@ class MovieCard extends PureComponent {
 
           <footer className="page-footer">
             <div className="logo">
-              <a href="main.html" className="logo__link logo__link--light">
+              <Link to={AppRoute.ROOT} className="logo__link logo__link--light">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <div className="copyright">
@@ -149,20 +148,13 @@ class MovieCard extends PureComponent {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  films: getFilteredMoviesByGenre(state),
-  movie: getCurrentMovieById(state, props),
-
-});
-
 MovieCard.propTypes = {
-
   onItemClick: PropTypes.func.isRequired,
   activeItem: PropTypes.string.isRequired,
-
+  getMovieDetails: PropTypes.func.isRequired,
   films: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
   movie: PropTypes.shape({
+    backgroundColor: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     smallImage: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -179,6 +171,18 @@ MovieCard.propTypes = {
   })
 };
 
+const mapStateToProps = (state, props) => ({
+  films: getFilteredMoviesByGenre(state),
+  movie: getCurrentMovieById(state, props),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMovieDetails(movie) {
+    dispatch(DataOperation.getMovieReviews(movie.id));
+    dispatch(ActionCreator.setCurrentMovie(movie));
+  },
+});
+
 export {MovieCard};
-export default connect(mapStateToProps)(MovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
 

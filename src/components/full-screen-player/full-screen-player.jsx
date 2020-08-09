@@ -84,12 +84,6 @@ const FullScreenPlayer = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onExitButtonClick() {
-    dispatch(ActionCreator.changePlayingMovie(null));
-  }
-});
-
 FullScreenPlayer.propTypes = {
   movieCard: PropTypes.shape({
     name: PropTypes.string,
@@ -104,6 +98,12 @@ FullScreenPlayer.propTypes = {
   getPlaybackProgress: PropTypes.func.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onExitButtonClick() {
+    dispatch(ActionCreator.changePlayingMovie(null));
+  }
+});
 
 export {FullScreenPlayer};
 export default connect(null, mapDispatchToProps)(FullScreenPlayer);

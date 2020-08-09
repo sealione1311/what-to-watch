@@ -5,7 +5,9 @@ import films from "../../mocks/films.js";
 import film from "../../mocks/film.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import NameSpace from '../../redux/name-space';
+import NameSpace from '../../redux/name-space.js';
+import {Router} from 'react-router-dom';
+import history from '../../history';
 
 const mockStore = configureStore([]);
 
@@ -18,21 +20,22 @@ describe(`RenderMoviesList`, () => {
 
     [NameSpace.STATE]: {
       currentGenre: `All genres`,
-      playingMovie: null,
-      currentSmallMovie: null,
+      currentMovie: film,
       displayedFilmsCount: 8,
     }
   });
   it(`RenderMoviesList`, () => {
-    const tree = renderer.create(<Provider store={store}>
-      <MoviesList
-        films={films}
-        onSmallCardClick={() => {}}
-      /></Provider>, {
-      createNodeMock: () => {
-        return {};
-      }
-    })
+    const tree = renderer.create(
+        <Router history={history}>
+          <Provider store={store}>
+            <MoviesList
+              films={films}
+              onSmallCardClick={() => {}}
+            /></Provider></Router>, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
         .toJSON();
 
     expect(tree).toMatchSnapshot();
